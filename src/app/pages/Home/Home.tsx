@@ -1,26 +1,33 @@
 import React, { FC } from 'react';
-import styles from './Home.module.css';
-import Card from "../../components/Cards/Cards";
+import CardOffer from "../../components/CardOffer/CardOffer";
+import CardRequest from "../../components/CardRequest/CardRequest";
 
 interface HomeProps {}
 
 const Home: FC<HomeProps> = () => (
-  <div className={styles.Home} data-testid="Home">
+  <div className="bg-white mt-7" data-testid="Home">
       <div>
           {/*Filter & Nom*/}
-            TEST
+            FILTRE
       </div>
-      <div className={styles.cards}>
+      <div className="grid grid-cols-2 divide-x justify-center">
           {/*Objet offre demande à toi*/}
-
-            <Card></Card>
-            <Card></Card>
-
+          <div>
+              <CardOffer></CardOffer>
+          </div>
+          <div>
+              <CardRequest></CardRequest>
+          </div>
       </div>
-      <div>
-          {/*Object offre demande générale*/}
-            TEST
-
+      <span>d</span>
+      <div className="grid grid-cols-2 divide-x justify-center">
+          {/*Objet offre demande à toi*/}
+          <div>
+              <CardOffer></CardOffer>
+          </div>
+          <div>
+              <CardRequest></CardRequest>
+          </div>
       </div>
   </div>
 );
