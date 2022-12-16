@@ -1,1 +1,8 @@
-.Navbar {}
+.menuIcon{
+    size:"large";
+    color: white;
+}
+
+.menuAppbar {
+    position:"static"
+}
