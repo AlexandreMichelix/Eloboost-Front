@@ -72,9 +72,7 @@ export default function Navbar() {
               <ListItemIcon>
                 <HomeRoundedIcon />
               </ListItemIcon>
-              <ListItemText primary={text}>
-                <Link to="/home"></Link>
-              </ListItemText>
+              <ListItemText primary={text}></ListItemText>
             </ListItemButton>
           </ListItem>
         ))}
@@ -84,19 +82,18 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup>
-
+      {/* //   <FormGroup>
+    //     <FormControlLabel
+    //       control={
+    //         <Switch
+    //           checked={auth}
+    //           onChange={handleChange}
+    //           aria-label="login switch"
+    //         />
+    //       }
+    //       label={auth ? "Logout" : "Login"}
+    //     />
+    //   </FormGroup> */}
       <AppBar>
         <Toolbar>
           <div>
@@ -127,7 +124,7 @@ export default function Navbar() {
                 </IconButton>
               </Tooltip>
               <Menu
-                id="menu-appbar"
+                id={styles.menuAppbar}
                 anchorEl={anchorEl}
                 anchorOrigin={{
                   vertical: "top",

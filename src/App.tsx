@@ -3,6 +3,8 @@ import "./App.css";
 import Navbar from "./app/components/Navbar/Navbar";
 import Home from "./app/pages/Home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./app/pages/Login/Login";
+import Register from "./app/pages/Register/Register";
 
 const Routing = () => {
   return (
@@ -10,8 +12,8 @@ const Routing = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/*<Route path="/login" element={<Login />} />*/}
-          {/*<Route path="/register" element={<Register />} />*/}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           {/*<Route path="/profile/:id" element={<Profile />} />*/}
         </Routes>
       </BrowserRouter>
