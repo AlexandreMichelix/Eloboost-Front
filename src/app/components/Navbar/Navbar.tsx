@@ -12,15 +12,13 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Avatar from "@mui/material/Avatar";
 import { Tooltip } from "@mui/material";
-import SL from "../../assets/icons/sl.jpg";
+import SL from "../../../assets/icons/sl.jpg";
 import styles from "./Navbar.module.css";
 import Drawer from "@mui/material/Drawer";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -28,6 +26,17 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   type Anchor = "left";
+
+  const myDrawerlist = [
+    {
+      displayText: "Home",
+      navigationPath: "/",
+    },
+    {
+      displayText: "Connexion",
+      navigationPath: "/login",
+    },
+  ];
 
   const [drawer, setDrawer] = React.useState({
     left: false,
@@ -43,6 +52,10 @@ export default function Navbar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    setAuth(false);
   };
 
   const toggleDrawer =
@@ -66,13 +79,15 @@ export default function Navbar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Home", "On", "Verra", "Plus Tard"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {myDrawerlist.map((navigationItem) => (
+          <ListItem
+            component={Link}
+            to={navigationItem.navigationPath}
+            key={navigationItem.displayText}
+            disablePadding
+          >
             <ListItemButton>
-              <ListItemIcon>
-                <HomeRoundedIcon />
-              </ListItemIcon>
-              <ListItemText primary={text}></ListItemText>
+              <ListItemText primary={navigationItem.displayText}></ListItemText>
             </ListItemButton>
           </ListItem>
         ))}
@@ -82,25 +97,25 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {/* //   <FormGroup>
-    //     <FormControlLabel
-    //       control={
-    //         <Switch
-    //           checked={auth}
-    //           onChange={handleChange}
-    //           aria-label="login switch"
-    //         />
-    //       }
-    //       label={auth ? "Logout" : "Login"}
-    //     />
-    //   </FormGroup> */}
-      <AppBar>
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={auth}
+              onChange={handleChange}
+              aria-label="login switch"
+            />
+          }
+          label={auth ? "Logout" : "Login"}
+        />
+      </FormGroup>
+      <AppBar color="secondary">
         <Toolbar>
           <div>
             {(["left"] as const).map((anchor) => (
               <React.Fragment key={anchor}>
                 <IconButton onClick={toggleDrawer(anchor, true)}>
-                  <MenuIcon />
+                  <MenuIcon sx={{ color: "white" }} />
                 </IconButton>
                 <Drawer
                   anchor={anchor}
@@ -113,8 +128,11 @@ export default function Navbar() {
             ))}
           </div>
           <IconButton className={styles.menuIcon}></IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            EloBoosting
+
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            <Link to="/">
+              <span>EloBoosting</span>
+            </Link>
           </Typography>
           {auth && (
             <div>
@@ -138,8 +156,17 @@ export default function Navbar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <Link to="/profile:id">
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                </Link>
+                <MenuItem
+                  onClick={() => {
+                    handleLogout();
+                    handleClose();
+                  }}
+                >
+                  Logout
+                </MenuItem>
               </Menu>
             </div>
           )}
