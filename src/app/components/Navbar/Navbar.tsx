@@ -156,17 +156,19 @@ export default function Navbar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <Link to="/profile:id">
+                <Link to="/profile">
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                 </Link>
-                <MenuItem
-                  onClick={() => {
-                    handleLogout();
-                    handleClose();
-                  }}
-                >
-                  Logout
-                </MenuItem>
+                <Link to="/home">
+                  <MenuItem
+                    onClick={() => {
+                      handleLogout();
+                      handleClose();
+                    }}
+                  >
+                    Logout
+                  </MenuItem>
+                </Link>
               </Menu>
             </div>
           )}

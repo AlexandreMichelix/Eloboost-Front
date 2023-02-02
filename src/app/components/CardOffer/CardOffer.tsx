@@ -21,10 +21,10 @@ const CardOffer: FC<CardOfferProps> = () => (
         <div className="justify-center flex flex-wrap">
           <div className="space-x-10 text-xs font-semibold text-slate-500 mt-2">
             <span className="text-xs font-semibold text-slate-900">
-              [Player Name]
+              [Booster Name]
             </span>
             <span className="text-xs font-semibold text-slate-900">
-              [Niveau]
+              [Booster Level]
             </span>
           </div>
         </div>
