@@ -41,24 +41,24 @@ const CardRequest: FC<CardRequestProps> = () => (
             <Dropdown></Dropdown>
           </div>
         </div>
-        <div className="flex space-x-4 mb-6 text-xs font-medium">
-          <div className="justify-center flex-auto flex space-x-4">
-            <button className="h-6 px-3 font-semibold rounded-md bg-black text-white" type="submit" onClick={(() => {
-              checkout({
-                lineItems: [
-                  {
-                    price: "price_1MWlv0AwL4pxGCAgHc6On3RA",
-                    quantity: 1
-                  }
-                ]
-              })
-            })}>Valider</button>
-          </div>
-        </div>
         <p className="justify-center text-xs text-slate-700">
           [Courte description]
         </p>
       </form>
+      <div className="flex space-x-4 mb-6 text-xs font-medium">
+        <div className="justify-center flex-auto flex space-x-4">
+          <button className="h-6 px-3 font-semibold rounded-md bg-black text-white" onClick={(() => {
+            checkout({
+              lineItems: [
+                {
+                  price: "price_1MWlv0AwL4pxGCAgHc6On3RA",
+                  quantity: 1
+                }
+              ]
+            })
+          })}>Valider</button>
+        </div>
+      </div>
     </Paper>
   </div>
 );
