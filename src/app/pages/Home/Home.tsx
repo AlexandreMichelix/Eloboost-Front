@@ -1,34 +1,21 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
+import BoosterList from "../../components/BoosterList/BoosterList";
 import CardOffer from "../../components/CardOffer/CardOffer";
 import CardRequest from "../../components/CardRequest/CardRequest";
 
 interface HomeProps {}
 
 const Home: FC<HomeProps> = () => (
-  <div className="bg-white mt-7" data-testid="Home">
+  <div className="bg-white min-h-screen flex" data-testid="Home">
+    <div className="flex-1">
+      <BoosterList></BoosterList>
+    </div>
+    <div className="flex-1">
+      {/*Objet offre demande à toi*/}
       <div>
-          {/*Filter & Nom*/}
-            FILTRE
+        <CardRequest></CardRequest>
       </div>
-      <div className="grid grid-cols-2 divide-x justify-center">
-          {/*Objet offre demande à toi*/}
-          <div>
-              <CardOffer></CardOffer>
-          </div>
-          <div>
-              <CardRequest></CardRequest>
-          </div>
-      </div>
-      <span>d</span>
-      <div className="grid grid-cols-2 divide-x justify-center">
-          {/*Objet offre demande à toi*/}
-          <div>
-              <CardOffer></CardOffer>
-          </div>
-          <div>
-              <CardRequest></CardRequest>
-          </div>
-      </div>
+    </div>
   </div>
 );
 
