@@ -1,8 +1,11 @@
+'use client';
+
 import React, { FC } from "react";
 import playerIcon from "../../../assets/icons/avatar-placeholder.png";
 import { Paper } from "@mui/material";
 import Dropdown from "../Dropdown/Dropdown";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import { checkout } from "../../../checkout"
 
 interface CardRequestProps {}
 
@@ -40,12 +43,16 @@ const CardRequest: FC<CardRequestProps> = () => (
         </div>
         <div className="flex space-x-4 mb-6 text-xs font-medium">
           <div className="justify-center flex-auto flex space-x-4">
-            <button
-              className="h-6 px-3 font-semibold rounded-md bg-black text-white"
-              type="submit"
-            >
-              [Valider]
-            </button>
+            <button className="h-6 px-3 font-semibold rounded-md bg-black text-white" type="submit" onClick={(() => {
+              checkout({
+                lineItems: [
+                  {
+                    price: "price_1MWlv0AwL4pxGCAgHc6On3RA",
+                    quantity: 1
+                  }
+                ]
+              })
+            })}>Valider</button>
           </div>
         </div>
         <p className="justify-center text-xs text-slate-700">
